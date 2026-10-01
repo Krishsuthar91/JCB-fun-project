@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JCB Backhoe Loader — Built to move earth</title>
+  <meta name="description" content="Scroll to take a JCB backhoe loader apart, one frame at a time.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav" id="nav">
+    <a class="nav__logo" href="#top">JCB</a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#story">Machine</a>
+      <a href="#specs">Specs</a>
+      <a href="quote.html" class="nav__cta">Request a quote</a>
+    </nav>
+  </header>
+
+  <div class="loader" id="loader" role="status" aria-live="polite">
+    <span class="loader__label">Loading machine <b id="loaderPct">0</b>%</span>
+    <span class="loader__bar"><i id="loaderBar"></i></span>
+  </div>
+
+  <main id="top">
+    <section class="scroll" id="story" aria-label="JCB backhoe loader scroll story">
+      <div class="scroll__pin">
+        <canvas id="stage" aria-label="JCB backhoe loader rotating as you scroll" role="img"></canvas>
+
+        <div class="beat beat--hero" data-from="0" data-to="0.16">
+          <h1>Built to<br>move earth.</h1>
+          <p>Scroll to walk around the backhoe loader.</p>
+        </div>
+        <div class="beat beat--left" data-from="0.24" data-to="0.42">
+          <h2>Loader up front.</h2>
+          <p>A wide bucket for loading, levelling and carrying, with the cab set high for a clear view of the work.</p>
+        </div>
+        <div class="beat beat--right" data-from="0.52" data-to="0.70">
+          <h2>Digger at the back.</h2>
+          <p>The boom and dipper reach deep for trenching, then fold away tight for travel.</p>
+        </div>
+        <div class="beat beat--left" data-from="0.80" data-to="0.97">
+          <h2>One machine, whole site.</h2>
+          <p>Dig, load and move without waiting for a second machine to arrive.</p>
+        </div>
+
+        <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+      </div>
+    </section>
+
+    <section class="specs" id="specs">
+      <h2>Made for the long shift.</h2>
+      <dl>
+        <div><dt>Dig depth</dt><dd>Up to 5.9 m</dd></div>
+        <div><dt>Loader bucket</dt><dd>1.0 m³ class</dd></div>
+        <div><dt>Cab</dt><dd>ROPS / FOPS protected</dd></div>
+      </dl>
+      <p class="specs__note">Figures are indicative. Confirm exact specifications for your model with a JCB dealer.</p>
+    </section>
+
+    <footer class="contact" id="contact">
+      <h2>See it on your site.</h2>
+      <a class="btn" href="quote.html">Request a quote</a>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

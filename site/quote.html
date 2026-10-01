@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quote Request — Made by Krish</title>
+  <meta name="description" content="JCB Backhoe Loader interactive scroll site — Made by Krish only for fun.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .quote-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: radial-gradient(circle at 50% 20%, #2a2c30 0%, #121316 100%);
+      color: #F3F4F6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient background glow */
+    .glow-orb {
+      position: absolute;
+      top: -150px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(245, 184, 0, 0.18) 0%, rgba(245, 184, 0, 0) 70%);
+      pointer-events: none;
+      border-radius: 50%;
+    }
+
+    .quote-main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(100px, 15vh, 160px) var(--pad) 60px;
+    }
+
+    .quote-card {
+      background: rgba(30, 32, 38, 0.75);
+      border: 1px solid rgba(245, 184, 0, 0.3);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 24px;
+      padding: clamp(32px, 6vw, 64px);
+      max-width: 680px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(245, 184, 0, 0.1);
+      position: relative;
+      animation: cardAppear 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes cardAppear {
+      from { opacity: 0; transform: translateY(30px) scale(0.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .badge-fun {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245, 184, 0, 0.15);
+      border: 1px solid var(--jcb);
+      color: var(--jcb);
+      font: 700 0.95rem var(--display);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 24px;
+    }
+
+    .quote-title {
+      font: 800 clamp(3.2rem, 8vw, 5.5rem)/0.95 var(--display);
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: #FFFFFF;
+      margin-bottom: 16px;
+    }
+
+    .quote-title span {
+      color: var(--jcb);
+      display: inline-block;
+      position: relative;
+    }
+
+    .quote-subtitle {
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      color: #A0A5B1;
+      max-width: 480px;
+      margin: 0 auto 36px;
+      line-height: 1.5;
+    }
+
+    /* Interactive Fun Box */
+    .fun-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+      text-align: left;
+    }
+
+    .fun-item {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 18px 20px;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .fun-item:hover {
+      transform: translateY(-4px);
+      border-color: rgba(245, 184, 0, 0.5);
+    }
+
+    .fun-label {
+      font: 600 0.85rem var(--display);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #838896;
+      margin-bottom: 6px;
+    }
+
+    .fun-val {
+      font: 700 1.25rem var(--display);
+      color: #FFFFFF;
+    }
+
+    .fun-val.yellow {
+      color: var(--jcb);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: var(--jcb);
+      color: #121316;
+      font: 700 1.15rem var(--display);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 16px 32px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.25s ease;
+      box-shadow: 0 10px 20px rgba(245, 184, 0, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(245, 184, 0, 0.4);
+      background: #FFC414;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #E2E3E2;
+      font: 700 1.15rem var(--display);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 16px 28px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
+    /* Honk animation effect */
+    .honk-effect {
+      position: fixed;
+      pointer-events: none;
+      font-size: 2.5rem;
+      animation: honkFloat 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+      z-index: 100;
+    }
+
+    @keyframes honkFloat {
+      0% { opacity: 1; transform: translate(-50%, -50%) scale(0.5) rotate(-10deg); }
+      50% { opacity: 1; transform: translate(-50%, -100px) scale(1.4) rotate(10deg); }
+      100% { opacity: 0; transform: translate(-50%, -160px) scale(1.8) rotate(0deg); }
+    }
+
+    .quote-footer {
+      text-align: center;
+      padding: 24px var(--pad);
+      color: #636875;
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+  </style>
+</head>
+<body class="quote-page">
+  <div class="glow-orb"></div>
+
+  <header class="nav is-scrolled" id="nav">
+    <a class="nav__logo" href="index.html">JCB</a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="index.html#story">Machine</a>
+      <a href="index.html#specs">Specs</a>
+      <a href="quote.html" class="nav__cta">Request a quote</a>
+    </nav>
+  </header>
+
+  <main class="quote-main">
+    <div class="quote-card">
+      <div class="badge-fun">
+        <span>🚜</span> Special Notice
+      </div>
+
+      <h1 class="quote-title">
+        Made by <span>Krish</span>
+      </h1>
+
+      <p class="quote-subtitle">
+        This website was crafted purely for fun! No actual heavy excavators will be dispatched to your front yard, but feel free to enjoy the 360° scroll experience.
+      </p>
+
+      <div class="fun-details">
+        <div class="fun-item">
+          <div class="fun-label">Creator</div>
+          <div class="fun-val yellow">Krish</div>
+        </div>
+        <div class="fun-item">
+          <div class="fun-label">Purpose</div>
+          <div class="fun-val">100% Fun</div>
+        </div>
+        <div class="fun-item">
+          <div class="fun-label">Estimated Price</div>
+          <div class="fun-val yellow">₹ 25 Lakhs</div>
+        </div>
+        <div class="fun-item">
+          <div class="fun-label">Machine Power</div>
+          <div class="fun-val">Unlimited ⚡</div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a href="index.html" class="btn-primary">
+          ← Back to JCB Machine
+        </a>
+        <button type="button" class="btn-secondary" id="honkBtn">
+          Honk Horn 📢
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="quote-footer">
+    <p>© 2026 JCB Scroll Experience — Built by Krish for fun.</p>
+  </footer>
+
+  <script>
+    const honkBtn = document.getElementById('honkBtn');
+    const sounds = ['🚜 HONK HONK!', 'BEEP BEEP! 🚚', 'VROOM VROOM! 💨', 'EARTH MOVED! 🪨', 'KRISH ROCKS! ⚡'];
+    
+    honkBtn.addEventListener('click', (e) => {
+      const effect = document.createElement('div');
+      effect.className = 'honk-effect';
+      effect.textContent = sounds[Math.floor(Math.random() * sounds.length)];
+      
+      const rect = honkBtn.getBoundingClientRect();
+      effect.style.left = (rect.left + rect.width / 2) + 'px';
+      effect.style.top = rect.top + 'px';
+      
+      document.body.appendChild(effect);
+      setTimeout(() => effect.remove(), 1000);
+    });
+  </script>
+</body>
+</html>
