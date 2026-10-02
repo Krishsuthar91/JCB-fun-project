@@ -270,22 +270,6 @@
     <p>© 2026 JCB Scroll Experience — Built by Krish for fun.</p>
   </footer>
 
-  <script>
-    const honkBtn = document.getElementById('honkBtn');
-    const sounds = ['🚜 HONK HONK!', 'BEEP BEEP! 🚚', 'VROOM VROOM! 💨', 'EARTH MOVED! 🪨', 'KRISH ROCKS! ⚡'];
-    
-    honkBtn.addEventListener('click', (e) => {
-      const effect = document.createElement('div');
-      effect.className = 'honk-effect';
-      effect.textContent = sounds[Math.floor(Math.random() * sounds.length)];
-      
-      const rect = honkBtn.getBoundingClientRect();
-      effect.style.left = (rect.left + rect.width / 2) + 'px';
-      effect.style.top = rect.top + 'px';
-      
-      document.body.appendChild(effect);
-      setTimeout(() => effect.remove(), 1000);
-    });
-  </script>
+  <script src="horn.js"></script>
 </body>
 </html>
